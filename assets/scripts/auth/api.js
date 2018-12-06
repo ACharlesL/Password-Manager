@@ -3,44 +3,40 @@
 const config = require('../config.js')
 const store = require('../store.js')
 
-const signUp = function (userData) {
-//  console.log('in sign up api')
+const signUp = (userData) => {
+  // FIXME: Change to proper api calls
   return $.ajax({
-    url: config.apiUrl + 'sign-up',
+    url: config.apiUrl + '/sign-up',
     method: 'POST',
     data: userData
   })
 }
 
-const signIn = function (userData) {
-//  console.log('in sign in api')
+const signIn = (userData) => {
   return $.ajax({
-    url: config.apiUrl + 'sign-in',
+    url: config.apiUrl + '/sign-in',
     method: 'POST',
     data: userData
   })
 }
 
-const changePassword = function (passwordData) {
-  // console.log('change pass data ' + passwordData)
+const changePassword = (pwdData) => {
   return $.ajax({
-    url: config.apiUrl + 'change-password',
     headers: {
-    // 'Content-type': 'application/json',
       Authorization: `Token token=${store.user.token}`
     },
+    url: config.apiUrl + '/change-password',
     method: 'PATCH',
-    data: passwordData
+    data: pwdData
   })
 }
 
-const signOut = function () {
+const signOut = () => {
   return $.ajax({
-    url: config.apiUrl + 'sign-out',
     headers: {
-    // 'Content-type': 'application/json',
       Authorization: `Token token=${store.user.token}`
     },
+    url: config.apiUrl + '/sign-out',
     method: 'DELETE'
   })
 }
@@ -48,7 +44,6 @@ const signOut = function () {
 module.exports = {
   signUp,
   signIn,
-  signOut,
-  changePassword
-
+  changePassword,
+  signOut
 }

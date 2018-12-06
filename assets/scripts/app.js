@@ -7,33 +7,32 @@
 // require('./example')
 
 const authEvents = require('./auth/events.js')
+const passportEvents = require('./passport/events.js')
 
 
 $(() => {
-  setDefaultState()
   addEventListeners()
+  setDefaultState()
 })
 
 const addEventListeners = () => {
-  $('#show-markers-button').on('click', () => {
-    mapsFunctions.codeAddress('200 Portland Street', 'A', 'Title')
-  })
 
   $('#sign-up-form').on('submit', authEvents.onSignUp)
   $('#sign-in-form').on('submit', authEvents.onSignIn)
   $('#change-password-form').on('submit', authEvents.onChangePassword)
   $('#sign-out-button').on('click', authEvents.onSignOut)
 
-  // $('#add-adventure-form').on('submit', adventureEvents.onCreateAdventure)
-  // $('#title-link').on('click', adventureEvents.onClickCenter)
-  // update adventure event handlers
-  // $('#update-adventure-form').on('submit', adventureEvents.onUpdateAdventure)
-  // $('#cancel-update-button').on('click', () => {
-  //   $('#update-adventure-box').hide()
-  //   $('#update-adventure-form').trigger('reset')
-  // })
+  $('#add-passport-form').on('submit', passportEvents.onCreatePassport)
+  $('#title-link').on('click', passportEvents.onClickCenter)
+  //  update passport event handlers
+  $('#update-passport-form').on('submit', passportEvents.onUpdatePassport)
+  $('#cancel-update-button').on('click', () => {
+    $('#update-passport-box').hide()
+    $('#update-passport-form').trigger('reset')
+   })
 
   $('#show-sign-in-button').on('click', () => {
+    console.log("in sign in app.js")
     $('#sign-in-box').show()
   })
   $('#cancel-sign-in-button').on('click', () => {
@@ -56,25 +55,25 @@ const addEventListeners = () => {
     $('#change-password-form').trigger('reset')
   })
 
-  // $('#show-create-button').on('click', () => {
-  //   $('#add-adventure-box').show()
-  // })
-  //
-  // $('#close-create-article').on('click', () => {
-  //   $('#add-adventure-form').trigger('reset')
-  // })
-  //
-  // $('#cancel-update-button').on('click', () => {
-  //   $('#update-adventure-form').trigger('reset')
-  // })
+  $('#show-create-button').on('click', () => {
+    $('#add-passport-box').show()
+  })
+
+  $('#close-create-article').on('click', () => {
+    $('#add-passport-form').trigger('reset')
+  })
+
+  $('#cancel-update-button').on('click', () => {
+    $('#update-passport-form').trigger('reset')
+  })
 }
 const setDefaultState = () => {
   $('#authenticated-buttons').hide()
   $('#sign-in-box').hide()
   $('#sign-up-box').hide()
   $('#change-password-box').hide()
-  // $('#adventure-control-buttons').hide()
-  // $('#add-adventure-box').hide()
-  // $('#update-adventure-box').hide()
-  // $('#map').hide()
+  $('#passport-control-buttons').hide()
+  $('#add-passport-box').hide()
+  $('#update-passport-box').hide()
+//  $('#map').hide()
 }

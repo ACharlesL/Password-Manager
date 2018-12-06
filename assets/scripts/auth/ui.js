@@ -2,116 +2,71 @@
 
 const store = require('../store.js')
 
-// const signUpSuccess = function () {
-//   $('#display-message').html('Sign up successful')
-//   $('#display-message').css('color', 'green')
-//   $('#sign-up-form').trigger('reset')
-// }
-  const signUpSuccess = (response) => {
-    $('#user-messages').html('')
-    const userHTML = (`
-      <h4> New User: ${response.user.email}</h4>
-      `)
-    $('#user-message').html(userHTML)
-    $('#sign-up-form').trigger('reset')
-  }
-
-const signUpFailure = function () {
-  $('#display-message').html('Something went wrong, please try again')
-  $('#display-message').css('color', 'red')
+const signUpSuccess = (response) => {
+  $('#user-messages').html('')
+  const userHTML = (`
+    <h4> New User: ${response.user.email}</h4>
+    `)
+  $('#user-message').html(userHTML)
   $('#sign-up-form').trigger('reset')
 }
-const signInSuccess = function (response) {
-  $('#display-message').html('Sign in successful')
-  $('#display-message').css('color', 'green')
-  $('#sign-in-form').trigger('reset')
-  // console.log('store before adding user key', store)
+
+const signInSuccess = (response) => {
+  $('#user-message').html('')
+  // TODO: Remove unnecessary data from output
+  const userHTML = (`
+    <h5>${response.user.email}<h5>
+    `)
+  $('#user-message').html(userHTML)
   store.user = response.user
-  // console.log('store after adding user key', store)
-  // console.log('store.user.token', store.user.token)
-  $('#sign-up-form').addClass('hidden')
-  $('#sign-in-form').addClass('hidden')
-  $('#signInModal').addClass('hidden')
-  $('#Change-password-form').removeClass('hidden')
-
-  $('.navigation').removeClass('hidden')
-  $('.fridge').removeClass('hidden')
-  $('.ingredient').removeClass('hidden')
-  $('.delete-fridge-form').removeClass('hidden')
-
-  $('#view-games-button').addClass('unhide')
-  $('#Change-password-form').addClass('unhide')
-  $('#player-logged-on').removeClass('hidden')
-  $('#player-logged-on').html(`${store.user.email} logged in`)
-  // console.log('sign in')
-  // $('#gameBoard').addClass('unhide')
-
-  // $('.gameBoard').addClass('hidden')
-}
-const signInFailure = function () {
-  // missing the l in html
-  $('#display-message').html('Something went wrong, please try again')
-  $('#display-message').css('color', 'red')
   $('#sign-in-form').trigger('reset')
-}
-const signOutSuccess = function () {
-  $('.fridge').addClass('hidden')
-  $('.ingredient').addClass('hidden')
-  $('.navigation').addClass('hidden')
-  $('.content').addClass('hidden')
-
-  $('#display-message').html('Sign Out successful')
-  $('#display-message').css('color', 'green')
-  $('#sign-up-form').removeClass('hidden')
-  $('#sign-in-form').removeClass('hidden')
-  $('#Change-password-form').addClass('hidden')
-  $('#sign-out-button').addClass('hidden')
-  $('#gameBoard').removeClass('unhide')
-  // $('#new-game-button').hide()
-  $('#new-game-button').removeClass('unhide')
-  $('#sign-out-button').removeClass('unhide')
-  $('#view-games-button').removeClass('unhide')
-  $('#Change-password-form').removeClass('unhide')
-  $('#Stats-message').addClass('hidden')
-  $('#player-logged-on').addClass('hidden')
-  // console.log('sign out')
-}
-const signOutFailure = function () {
-  $('#display-message').html('Something went wrong, please try again')
-  $('#display-message').css('color', 'red')
-  $('#sign-in-form').trigger('reset')
-}
-const createGamesuccess = function (response) {
-//  console.log(response)
-}
-const userGames = function (response) {
-//  console.log('in UI games')
-  store.games = response
-//  console.log(response)
+  $('#sign-in-box').hide()
+  $('#sign-up-box').hide()
+  $('#unauthenticated-buttons').hide()
+  $('#authenticated-buttons').show()
+  $('#adventure-control-buttons').show()
+  $('#map').show()
 }
 
-const changePasswordFailure = function () {
-  $('#display-message').html('unable to change password')
-  $('#display-message').css('color', 'red')
-  $('#Change-password-form').trigger('reset')
+const changePasswordSuccess = (response) => {
+  $('#user-message').html('')
+  const outputHTML = (`
+    <h6>Password Changed!</h6>
+    `)
+  $('#user-message').html(outputHTML)
+  $('#change-password-box').hide()
+  $('#change-password-form').trigger('reset')
 }
-const changePasswordSuccess = function (response) {
-//  console.log('new password success')
-  // store.user = response.user
-  $('#Change-password-form').addClass('hidden')
-  $('#display-message').html('Password changed')
-  $('#display-message').css('color', 'green')
-  $('#Change-password-form').trigger('reset')
+
+const signOutSuccess = (response) => {
+  $('#user-message').html(`<h5> Signed Out </h5>`)
+  $('#unauthenticated-buttons').show()
+  $('#authenticated-buttons').hide()
+  $('#change-password-box').hide()
+  $('#map').hide()
+  $('#show-adventures-section').html('')
+  $('#adventure-control-buttons').hide()
+  $('#change-password-form').trigger('reset')
+  $('#update-adventure-form').trigger('reset')
+  $('#add-adventure-form').trigger('reset')
+  map.deleteAllMarkers()
+  store.user = null // remove all stored data on logout
+  store.adventures = {}
 }
+
+// OPTIMIZE: Create failure functions for each possible state rather than a blanket case
+const failure = (response) => {
+  $('#user-message').html('')
+  const responseHTML = (`
+    <h3>ERROR: Failed to authenticate with server</h3>
+    `)
+  $('#user-message').html(responseHTML)
+}
+
 module.exports = {
   signUpSuccess,
-  signUpFailure,
   signInSuccess,
-  signInFailure,
-  signOutSuccess,
-  signOutFailure,
-  createGamesuccess,
-  userGames,
   changePasswordSuccess,
-  changePasswordFailure
+  signOutSuccess,
+  failure
 }
