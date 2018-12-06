@@ -24,7 +24,7 @@ const signInSuccess = (response) => {
   $('#sign-up-box').hide()
   $('#unauthenticated-buttons').hide()
   $('#authenticated-buttons').show()
-  $('#adventure-control-buttons').show()
+  $('#passport-control-buttons').show()
   $('#map').show()
 }
 
@@ -44,14 +44,14 @@ const signOutSuccess = (response) => {
   $('#authenticated-buttons').hide()
   $('#change-password-box').hide()
   $('#map').hide()
-  $('#show-adventures-section').html('')
-  $('#adventure-control-buttons').hide()
+  $('#show-passports-section').html('')
+  $('#passport-control-buttons').hide()
   $('#change-password-form').trigger('reset')
-  $('#update-adventure-form').trigger('reset')
-  $('#add-adventure-form').trigger('reset')
+  $('#update-passport-form').trigger('reset')
+  $('#add-passport-form').trigger('reset')
   map.deleteAllMarkers()
   store.user = null // remove all stored data on logout
-  store.adventures = {}
+  store.passports = {}
 }
 
 // OPTIMIZE: Create failure functions for each possible state rather than a blanket case

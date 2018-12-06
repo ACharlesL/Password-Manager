@@ -15,6 +15,7 @@ const createPassport = (data) => {
 }
 
 const showPassport = (data) => {
+  console.log('in showpassport api')
   return $.ajax({
     headers: {
       Authorization: `Token token=${store.user.token}`

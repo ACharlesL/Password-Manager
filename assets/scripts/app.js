@@ -23,12 +23,11 @@ const addEventListeners = () => {
   $('#sign-out-button').on('click', authEvents.onSignOut)
 
   $('#add-passport-form').on('submit', passportEvents.onCreatePassport)
-  $('#title-link').on('click', passportEvents.onClickCenter)
   //  update passport event handlers
   $('#update-passport-form').on('submit', passportEvents.onUpdatePassport)
   $('#cancel-update-button').on('click', () => {
-    $('#update-passport-box').hide()
-    $('#update-passport-form').trigger('reset')
+  $('#update-passport-box').hide()
+  $('#update-passport-form').trigger('reset')
    })
 
   $('#show-sign-in-button').on('click', () => {
@@ -56,8 +55,9 @@ const addEventListeners = () => {
   })
 
   $('#show-create-button').on('click', () => {
-    $('#add-passport-box').show()
+    $('#add-NewPassport-box').show()
   })
+  // $('#add-passport-box').show()
 
   $('#close-create-article').on('click', () => {
     $('#add-passport-form').trigger('reset')
@@ -75,5 +75,5 @@ const setDefaultState = () => {
   $('#passport-control-buttons').hide()
   $('#add-passport-box').hide()
   $('#update-passport-box').hide()
-//  $('#map').hide()
+  $('#add-NewPassport-box').hide()
 }

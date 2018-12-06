@@ -2,38 +2,28 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col"></th>
-      <th scope="col">Priority</th>
       <th scope="col">Title</th>
-      <th scope="col">Location</th>
-      <th scope="col">Notes</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
+      <th scope="col">Email</th>
+      <th scope="col">Cred</th>
+      <th scope="col">URL</th>
+      <th scope="col">Contact</th>
+      <th scope="col">Note</th>
       <th scope="col"></th>
     </tr>
   </thead>
   <tbody id="list-table">
     {{#each passports as |passport|}}
-        <tr>
-          {{#if passport.checked}}
-            <th class="complete" scope="row"><button id="{{passport._id}}-plot" class="btn btn-primary">Show</button></th>
-            <td class="complete">{{passport.priority}}</td>
-            <td class="complete">{{passport.title}}</td>
-            <td class="complete">{{passport.place}}</td>
-            <td class="complete">{{passport.notes}}</td>
-            <td class="complete"><button id="{{passport._id}}-checkbox" class="btn btn-outline-secondary">Unfinish</button></td>
-            <td class="complete"><button id="{{passport._id}}-edit" class="btn btn-warning" data-toggle="modal" data-target="#updatePassportModal">Edit</button></td>
-            <td class="complete"><button id="{{passport._id}}-delete" class="btn btn-danger">Delete</button></td>
-          {{else}}
-            <th scope="row"><button id="{{passport._id}}-plot" class="btn btn-primary">Show</button></th>
-            <td>{{passport.priority}}</td>
-            <td>{{passport.title}}</td>
-            <td>{{passport.place}}</td>
-            <td>{{passport.notes}}</td>
-            <td><button id="{{passport._id}}-checkbox" class="btn btn-success">Complete</button></td>
-            <td><button id="{{passport._id}}-edit" class="btn btn-warning" data-toggle="modal" data-target="#updatePassportModal">Edit</button></td>
-            <td><button id="{{passport._id}}-delete" class="btn btn-danger">Delete</button></td>
-          {{/if}}
-      </tr>
+    <tr>
+        <td><button id="{{passport._id}}-show" class="btn btn-warning" data-toggle="modal" data-target="#showPassportModal">Open</button></td>
+        <td>{{passport.title}}</td>
+        <td>{{passport.email}}</td>
+        <td>{{passport.cred}}</td>
+        <td>{{passport.url}}</td>
+        <td>{{passport.contact}}</td>
+        <td>{{passport.note}}</td>
+        <td><button id="{{passport._id}}-edit" class="btn btn-warning" data-toggle="modal" data-target="#updatePassportModal">Edit</button></td>
+        <td><button id="{{passport._id}}-delete" class="btn btn-danger">Delete</button></td>
+  </tr>
     {{/each}}
   </tbody>
 </table>

@@ -2,8 +2,9 @@
 
 // const store = require('../store.js')
 const passportsTemplate = require('../templates/passports.handlebars')
+
 const store = require('../store.js')
-const map = require('./map.js')
+// const map = require('./map.js')
 
 const createPassportSuccess = (response) => {
   $('#user-messages').html('')
@@ -17,10 +18,11 @@ const createPassportSuccess = (response) => {
 }
 
 const showPassportSuccess = (response) => {
+  console.log("in showPassportSuccess UI")
   const passportsHTML = passportsTemplate({passports: response.passports})
   $('#show-passports-section').html(passportsHTML)
   // console.log(response.passports)
-  map.deleteAllMarkers()
+//  map.deleteAllMarkers()
   store.passports = {}
   response.passports.forEach((passport) => { // Store passports with key of _id
     store.passports[passport._id] = passport
@@ -65,8 +67,8 @@ const passportUpdateFailure = (response) => {
 // // console.log($('span[button id="'passport._id-edit'"]')
 
 module.exports = {
-  createpassportSuccess,
-  showpassportSuccess,
+  createPassportSuccess,
+  showPassportSuccess,
   passportFailure,
   passportDeleteFailure,
   passportUpdateFailure,
