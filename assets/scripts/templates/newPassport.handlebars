@@ -1,0 +1,23 @@
+{{#each passports as |passport|}}
+  <!--{{log ingredient}}
+    {{> partial}}
+    Don't uncomment yet -->
+
+  <div>
+    <h1 data-id="{{passport.id}}"> <small>{{passport.name}}</small></h1>
+    <section data-id="{{passport.id}}"
+    <p>{{#if passport.id}}
+      {{passport.id}}
+      {{passport.title}}
+      {{passport.cred}}
+
+    {{else}}
+      No passport provided.
+    {{/if}}
+    </p>
+    <button type="submit" class="btn btn-default">Remove</button>
+    </section>
+
+  </div>
+
+{{/each}}

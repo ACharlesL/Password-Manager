@@ -26,18 +26,17 @@ const showPassport = (data) => {
   })
 }
 
-const updatePassport = (updatedPassport, id) => {
+const updatePassport = (updatedPassport) => {
   // const updateId = store.updateid
   // // console.log(store.updateid)
-  console.log('in updatePassport api')
-  console.log(updatedPassport.passport.title)
+  const updateId = store.updateid
   return $.ajax({
-    url: config.apiUrl + '/passports/' + id,
+    url: config.apiUrl + '/passports/' + updateId,
     headers: {
       Authorization: `Token token=${store.user.token}`
     },
     method: 'PATCH',
-    data: updatedPassport.passport
+    data: updatedPassport
   })
 }
 

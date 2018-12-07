@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Password Manager</title>
+      <title>Password Manager </title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -16,7 +16,7 @@
       <nav class="navbar navbar-dark navbar-color fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a id="title-link" class="navbar-brand" href="#">Password Manager</a>
+            <a id="title-link" class="navbar-brand" href="#">Password Manager<h6>status:in the valley</h6></a>
           </div>
           <span id="user-message" class="messages"> </span>
           <div class="float-right">
@@ -117,7 +117,55 @@
         <br />
         <button id="show-create-button" class="btn btn-danger" data-toggle="modal" data-target="#createPassportModal"> Add Passport </button>
         <br />
+        <button id="getPassportsButton" class="btn btn-default">Get Passports</button>
+        <br />
+        <button id="editPassportsButton" class="btn btn-default">Edit Passports</button>
+        <br />
       </div>
+    </form>
+
+    <form id="update-passport-form">
+      <h5>  Update passport </h5>
+      <div class="container-updatePassport">
+        <form id="update-passport-form" class="px-4 py-3 hidden form-group row" role="form">
+
+          <div class="form-group">
+            <label for="size">ID</label>
+            <input  id="update-id" required class="form-control" placeholder="id" name="passport[id]" type="text"/>
+          </div>
+            <div class="form-group">
+              <label for="size">Title</label>
+              <input  id="update-title" required class="form-control" placeholder="Title" name="passport[title]" type="text"/>
+        </div>
+              <div class="form-group">
+                <label for="color">Email</label>
+                <input  id="update-email" required class="form-control" placeholder="john@gmail.com" name="passport[email]" type="text"/>
+        </div>
+              <div class="form-group">
+                <label for="color">Password</label>
+                <input  id="update-cred" required class="form-control" placeholder="****" name="passport[cred]" type="text"/>
+        </div>
+              <div class="form-group">
+                <label for="color">URL</label>
+                <input  id="update-url" required class="form-control" placeholder="passportmanager.com" name="passport[url]" type="text"/>
+        </div>
+              <div class="form-group">
+                <label for="color">Contact info</label>
+                <input  id="update-contact" required class="form-control" placeholder="cell number, email" name="passport[contact]" type="text"/>
+        </div>
+              <div class="form-group">
+                <label for="color">Notes</label>
+                <input  id="update-notes" required class="form-control" placeholder="awesome app" name="passport[notes]" type="text"/>
+        </div>
+                <div class="modal-footer">
+                  <button id="close-update-article" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">update it!</button>
+                </div>
+        </form>
+      </div>
+    </form>
+
+      <div id="content" class="content"></div>
 
       <!-- Create Article Modal -->
       <div class="modal fade hide" id="createPassportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -213,7 +261,7 @@
       </div>
 
       <!-- Update Article Modal -->
-      <div class="modal fade hide" id="updatePassportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <!-- <div class="modal fade hide" id="updatePassportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -251,13 +299,13 @@
               </div>
                       <div class="modal-footer">
                         <button id="close-update-article" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">update</button>
+                        <button type="submit" class="btn btn-primary">update it!</button>
                       </div>
               </form>
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div id="show-passports-section" class="white container"> </div>
       <div id="background-image"></div>

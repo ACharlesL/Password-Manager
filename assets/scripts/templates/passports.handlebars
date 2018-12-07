@@ -2,6 +2,7 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col"></th>
+      <th scope="col">ID</th>
       <th scope="col">Title</th>
       <th scope="col">Email</th>
       <th scope="col">Cred</th>
@@ -14,14 +15,15 @@
   <tbody id="list-table">
     {{#each passports as |passport|}}
     <tr>
-        <td><button id="{{passport._id}}-show" class="btn btn-warning" data-toggle="modal" data-target="#showPassportModal">Open</button></td>
+        <td><button id="{{passport._id}}-show" class="btn btn-warning" data-toggle="modal" data-target="#showPassportModal">Show</button></td>
+        <td>{{passport.id}}</td>
         <td>{{passport.title}}</td>
         <td>{{passport.email}}</td>
         <td>{{passport.cred}}</td>
         <td>{{passport.url}}</td>
         <td>{{passport.contact}}</td>
         <td>{{passport.note}}</td>
-        <td><button id="{{passport._id}}-edit" class="btn btn-warning" data-toggle="modal" data-target="#updatePassportModal">Edit</button></td>
+        <!-- <td><button id="{{passport._id}}-edit" class="btn btn-warning" data-toggle="modal" data-target="#updatePassportModal">Edit</button></td> -->
         <td><button id="{{passport._id}}-delete" class="btn btn-danger">Delete</button></td>
   </tr>
     {{/each}}

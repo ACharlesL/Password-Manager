@@ -25,6 +25,16 @@ const addEventListeners = () => {
   $('#add-passport-form').on('submit', passportEvents.onCreatePassport)
   //  update passport event handlers
   $('#update-passport-form').on('submit', passportEvents.onUpdatePassport)
+  $('#getPassportsButton').on('click', passportEvents.onGetPassports)
+  $('.content').on('click', 'button', passportEvents.onGetPassports)
+  $('#update-ingredient-form').on('submit', passportEvents.onUpdateIngredient)
+  $('#editPassportsButton').on('click', passportEvents.onUpdateIngredient)
+
+  $('#editPassportsButton').on('click', () => {
+    console.log("edit button")
+    $('#update-passport-form').show()
+  })
+
   $('#cancel-update-button').on('click', () => {
     $('#update-passport-box').hide()
     $('#update-passport-form').trigger('reset')
@@ -66,6 +76,7 @@ const addEventListeners = () => {
   $('#cancel-update-button').on('click', () => {
     $('#update-passport-form').trigger('reset')
   })
+
 }
 const setDefaultState = () => {
   $('#authenticated-buttons').hide()
@@ -76,4 +87,5 @@ const setDefaultState = () => {
   $('#add-passport-box').hide()
   $('#update-passport-box').hide()
   $('#add-NewPassport-box').hide()
+  $('#update-passport-form').hide()
 }

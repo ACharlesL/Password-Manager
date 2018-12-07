@@ -14,124 +14,69 @@ const onCreatePassport = (event) => {
   // // console.log(data)
   //data.passport.checked = false // Always create an passport with false for checked status
   api.createPassport(data)
-    .then(ui.createPassportSuccess)
+    .then(ui.passportCreateSuccess)
     .then(showPassports)
     .catch(ui.passportFailure)
 }
 
-const onClickCheckbox = (id) => {
-  store.passports[id].checked = !store.passports[id].checked
-  const current = store.passports[id]
 
-  const updatedPassport = {
-    'passport': {
-      'title': current.title,
-      'email': current.email,
-      'cred': current.cred,
-      'url': current.url,
-      'contact': current.contact,
-      'note': current.note
-    }
-  }
-
-  api.updatePassport(updatedPassport, id)
-    .then(ui.passportUpdateSuccess)
-    .then(showPassports)
-    .catch(ui.passportUpdateFailure)
-}
-
-const onClickEdit = (id) => {
+const onGetPassports = (event) => {
+  console.log("in get pass")
   event.preventDefault()
-  store.updatePassportId = id
-  console.log(store.updatePassportId)
-
-  $('#update-passport-box').show()
-
-// current passport being updated
-}
-
-const onClickShow = (id) => {
-  console.log("in show button")
-  event.preventDefault()
-  store.updatePassportId = id
-  // // console.log(store.updatePassportId)
-
-  $('#update-passport-box').show()
-
-// current passport being updated
+  api.showPassport()
+    .then(ui.getPassportsSuccess)
+    .catch(ui.failure)
 }
 
 const onUpdatePassport = (event) => {
+//  console.log('in update')
   event.preventDefault()
   const data = getFormFields(event.target)
-  // console.log(data)
-
-  // current adventure being updated
-  //  // console.log(store.updateid)
+//  console.log(data)
+  store.updateid = data.id
   const updatedPassport = {
     'passport': {
-      'title': data.passport.title,
-      'email': data.passport.email,
-      'cred': data.passport.cred,
-      'url': data.passport.url,
-      'contact': data.passport.contact,
-      'note': data.passport.note
+      'title': data.title,
+      'email': data.email,
+      'cred': data.cred,
+      'url': data.url,
+      'contact': data.contact,
+      'note': data.note
     }
   }
-
-   console.log(updatedPassport)
-  api.updatePassport(updatedPassport, store.updatePassportId)
-    .then(ui.passportUpdateSuccess)
-    .then(showPassports)
-    .catch(ui.passportUpdateFailure)
+  api.updatePassport(updatedPassport)
+    .then(ui.updatePassportsSuccess)
+    .catch(ui.failure)
 }
 
-const onClickDelete = (id) => {
+// Delete passport
+const onDeletePassport = (event) => {
   event.preventDefault()
-  // console.log(id)
-  api.deletePassport(id)
-    .then(showPassports)
-    .catch(ui.passportDeleteFailure)
+  // console.log('in delete ingrid')
+  const PassportId = $(event.target).closest('section').data('id')
+  api.deletePassport(PassportId)
+    .then(() => onGetPassports(event))
+    .catch(ui.failure)
 }
 
-
-
-const handlePassports = (passports) => {
-  console.log(passports)
-  console.log(passports[0].id)
-  store.passports = {}
-  passports.forEach((passport) => {
-
-    $(`#${passports._id}-checkbox`).on('click', () => {
-      onClickCheckbox(passport._id)
-    })
-    $(`#${passport._id}-edit`).on('click', () => {
-      onClickEdit(passport._id)
-    })
-    $(`#${passport._id}-delete`).on('click', () => {
-      onClickDelete(passport._id)
-    })
-    $(`#${passport._id}-plot`).on('click', () => {
-      onClickPlot(passport._id)
-    })
-
-    const priority = passport.priority === undefined ? '' : adventure.priority.toString()
-    map.findPlaceLocation(adventure._id, adventure.place, priority, adventure.title)
-
-    store.passports[passport._id] = passport
-  })
-}
 
 const showPassports = () => {
-  console.log("in showPass event")
-  api.showPassport()
-    .then(ui.showPassportSuccess)
-    .then(handlePassports)
+  api.showPassports()
+    .then(ui.showPassportsSuccess)
+    .then(onGetPassports)
     .catch(ui.passportFailure)
 }
+// const showPassports = () => {
+//   console.log("in showPass event")
+//   api.showPassport()
+//     .then(ui.showPassportSuccess)
+//     .then(handlePassports)
+//     .catch(ui.passportFailure)
+// }
 
 module.exports = {
   onCreatePassport,
-  showPassports,
-  onUpdatePassport
+  onUpdatePassport,
+  onDeletePassport,
+  onGetPassports
 }
