@@ -1,8 +1,8 @@
 ## Introduction
 
 A brief Introduction and summary of the App.
-YACAWT is a single page application that allows a user to communicate/chat with out credentialed users of the application in any language the user chooses to.
-In the future the application should provide users the option to communicate with multiple user in one session.
+Password manager is a single page application that allows a user to store a passport which contains credential to an application or website a user uses.
+In the future the application should provide the users security info regarding the website or application.
 
 ## Links
 
