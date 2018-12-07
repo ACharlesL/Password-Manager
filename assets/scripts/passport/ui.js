@@ -21,12 +21,13 @@ const showPassportSuccess = (response) => {
   console.log("in showPassportSuccess UI")
   const passportsHTML = passportsTemplate({passports: response.passports})
   $('#show-passports-section').html(passportsHTML)
-  // console.log(response.passports)
-//  map.deleteAllMarkers()
+   console.log(response.passports)
+  //  map.deleteAllMarkers()
   store.passports = {}
   response.passports.forEach((passport) => { // Store passports with key of _id
     store.passports[passport._id] = passport
   })
+  console.log(store.passports[passport._id])
   return response.passports
 }
 

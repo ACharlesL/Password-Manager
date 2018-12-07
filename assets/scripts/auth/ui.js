@@ -25,7 +25,6 @@ const signInSuccess = (response) => {
   $('#unauthenticated-buttons').hide()
   $('#authenticated-buttons').show()
   $('#passport-control-buttons').show()
-  $('#map').show()
 }
 
 const changePasswordSuccess = (response) => {
@@ -43,13 +42,11 @@ const signOutSuccess = (response) => {
   $('#unauthenticated-buttons').show()
   $('#authenticated-buttons').hide()
   $('#change-password-box').hide()
-  $('#map').hide()
   $('#show-passports-section').html('')
   $('#passport-control-buttons').hide()
   $('#change-password-form').trigger('reset')
   $('#update-passport-form').trigger('reset')
   $('#add-passport-form').trigger('reset')
-  map.deleteAllMarkers()
   store.user = null // remove all stored data on logout
   store.passports = {}
 }

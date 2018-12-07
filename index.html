@@ -62,7 +62,7 @@
         <br />
       </div>
 
-      <div id="add-NewPassport-box" class="container">
+      <!-- <div id="add-NewPassport-box" class="container">
         <form id="New-Passsport-form" class="form-inline">
           <legend>New Passport </legend>
           <div class="modal-body">
@@ -99,7 +99,7 @@
           </div>
         </form>
         <br />
-      </div>
+      </div> -->
 
       <div id="change-password-box" class="container">
         <form id="change-password-form" class="form-inline">
@@ -138,23 +138,23 @@
               </div>
                     <div class="form-group">
                       <label for="color">Email</label>
-                      <input  id="create-email" required class="form-control" placeholder="john@gmail.com" name="passport[EMAIL]" type="text"/>
+                      <input  id="create-email" required class="form-control" placeholder="john@gmail.com" name="passport[email]" type="text"/>
               </div>
                     <div class="form-group">
                       <label for="color">Password</label>
-                      <input  id="create-password" required class="form-control" placeholder="****" name="passport[PASSWORD]" type="text"/>
+                      <input  id="create-cred" required class="form-control" placeholder="****" name="passport[cred]" type="text"/>
               </div>
                     <div class="form-group">
                       <label for="color">URL</label>
-                      <input  id="create-url" required class="form-control" placeholder="passportmanager.com" name="passport[URL]" type="text"/>
+                      <input  id="create-url" required class="form-control" placeholder="passportmanager.com" name="passport[url]" type="text"/>
               </div>
                     <div class="form-group">
                       <label for="color">Contact info</label>
-                      <input  id="create-contact" required class="form-control" placeholder="cell number, email" name="passport[CONTACT]" type="text"/>
+                      <input  id="create-contact" required class="form-control" placeholder="cell number, email" name="passport[contact]" type="text"/>
               </div>
                     <div class="form-group">
                       <label for="color">Notes</label>
-                      <input  id="create-notes" required class="form-control" placeholder="awesome app" name="passport[NOTE]" type="text"/>
+                      <input  id="create-notes" required class="form-control" placeholder="awesome app" name="passport[note]" type="text"/>
               </div>
                       <div class="modal-footer">
                         <button id="close-create-article" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -235,7 +235,7 @@
               </div>
                     <div class="form-group">
                       <label for="color">Password</label>
-                      <input  id="update-password" required class="form-control" placeholder="****" name="passport[password]" type="text"/>
+                      <input  id="update-cred" required class="form-control" placeholder="****" name="passport[cred]" type="text"/>
               </div>
                     <div class="form-group">
                       <label for="color">URL</label>
@@ -247,11 +247,11 @@
               </div>
                     <div class="form-group">
                       <label for="color">Notes</label>
-                      <input  id="update-notes" required class="form-control" placeholder="awesome app" name="passport[note]" type="text"/>
+                      <input  id="update-notes" required class="form-control" placeholder="awesome app" name="passport[notes]" type="text"/>
               </div>
                       <div class="modal-footer">
                         <button id="close-update-article" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">update it!</button>
+                        <button type="submit" class="btn btn-primary">update</button>
                       </div>
               </form>
             </div>

@@ -26,8 +26,8 @@ const addEventListeners = () => {
   //  update passport event handlers
   $('#update-passport-form').on('submit', passportEvents.onUpdatePassport)
   $('#cancel-update-button').on('click', () => {
-  $('#update-passport-box').hide()
-  $('#update-passport-form').trigger('reset')
+    $('#update-passport-box').hide()
+    $('#update-passport-form').trigger('reset')
    })
 
   $('#show-sign-in-button').on('click', () => {
@@ -55,9 +55,9 @@ const addEventListeners = () => {
   })
 
   $('#show-create-button').on('click', () => {
-    $('#add-NewPassport-box').show()
+    $('#add-passport-box').show()
   })
-  // $('#add-passport-box').show()
+  //
 
   $('#close-create-article').on('click', () => {
     $('#add-passport-form').trigger('reset')

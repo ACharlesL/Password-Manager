@@ -9,6 +9,8 @@ const ui = require('./ui.js')
 const onCreatePassport = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
+  console.log("in create passport")
+  console.log(data)
   // // console.log(data)
   //data.passport.checked = false // Always create an passport with false for checked status
   api.createPassport(data)
@@ -41,7 +43,7 @@ const onClickCheckbox = (id) => {
 const onClickEdit = (id) => {
   event.preventDefault()
   store.updatePassportId = id
-  // // console.log(store.updatePassportId)
+  console.log(store.updatePassportId)
 
   $('#update-passport-box').show()
 
@@ -64,20 +66,20 @@ const onUpdatePassport = (event) => {
   const data = getFormFields(event.target)
   // console.log(data)
 
-  // current passport being updated
+  // current adventure being updated
   //  // console.log(store.updateid)
   const updatedPassport = {
     'passport': {
-      'title': current.title,
-      'email': current.email,
-      'cred': current.cred,
-      'url': current.url,
-      'contact': current.contact,
-      'note': current.note
+      'title': data.passport.title,
+      'email': data.passport.email,
+      'cred': data.passport.cred,
+      'url': data.passport.url,
+      'contact': data.passport.contact,
+      'note': data.passport.note
     }
   }
 
-  // console.log(updatedPassport)
+   console.log(updatedPassport)
   api.updatePassport(updatedPassport, store.updatePassportId)
     .then(ui.passportUpdateSuccess)
     .then(showPassports)
@@ -92,12 +94,16 @@ const onClickDelete = (id) => {
     .catch(ui.passportDeleteFailure)
 }
 
+
+
 const handlePassports = (passports) => {
+  console.log(passports)
+  console.log(passports[0].id)
   store.passports = {}
-  console.log("in handlePass")
-  passports.passports.forEach((passport) => {
-    $(`#${passport._id}-show`).on('click', () => {
-      onClickShow(passport._id)
+  passports.forEach((passport) => {
+
+    $(`#${passports._id}-checkbox`).on('click', () => {
+      onClickCheckbox(passport._id)
     })
     $(`#${passport._id}-edit`).on('click', () => {
       onClickEdit(passport._id)
@@ -105,6 +111,13 @@ const handlePassports = (passports) => {
     $(`#${passport._id}-delete`).on('click', () => {
       onClickDelete(passport._id)
     })
+    $(`#${passport._id}-plot`).on('click', () => {
+      onClickPlot(passport._id)
+    })
+
+    const priority = passport.priority === undefined ? '' : adventure.priority.toString()
+    map.findPlaceLocation(adventure._id, adventure.place, priority, adventure.title)
+
     store.passports[passport._id] = passport
   })
 }
