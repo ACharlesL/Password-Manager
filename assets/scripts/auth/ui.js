@@ -16,6 +16,8 @@ const signInSuccess = function (response) {
   $('#display-message').html('Sign in successful')
   $('#display-message').css('color', 'green')
   $('#sign-in-form').trigger('reset')
+  $('#sign-in-form').addClass('hidden')
+  $('#sign-in-button').addClass('hidden')
   // console.log('store before adding user key', store)
   store.user = response.user
   // console.log('store after adding user key', store)
@@ -26,19 +28,17 @@ const signInSuccess = function (response) {
   $('#sign-out-button').removeClass('hidden')
   $('#createPassportButton').removeClass('hidden')
   $('#updatePassportButton').removeClass('hidden')
-
+  $('#getPassportsButton').removeClass('hidden')
 
   $('#sign-up-form').addClass('hidden')
-  $('#sign-in-form').addClass('hidden')
+
 
   $('.navigation').removeClass('hidden')
   $('.fridge').removeClass('hidden')
   $('.ingredient').removeClass('hidden')
   $('.delete-fridge-form').removeClass('hidden')
-
-  $('#view-games-button').addClass('unhide')
   $('#player-logged-on').removeClass('hidden')
-  $('#player-logged-on').html(`${store.user.email} logged in`)
+  $('#display-message').html(`${store.user.email} logged in`)
   // console.log('sign in')
   // $('#gameBoard').addClass('unhide')
   // Passport forms
@@ -57,10 +57,19 @@ const signOutSuccess = function () {
   $('.ingredient').addClass('hidden')
   $('.navigation').addClass('hidden')
   $('.content').addClass('hidden')
-
+  $('#sign-in-button').removeClass('hidden')
   // hide buttons
   $('#sign-out-button').addClass('hidden')
   $('#change-password-button').addClass('hidden')
+  $('#createPassportButton').addClass('hidden')
+  $('#updatePassportButton').addClass('hidden')
+  $('#getPassportsButton').addClass('hidden')
+
+  //hide FORMS
+  $('#update-passport-form').addClass('hidden')
+  $('#create-passport-form').addClass('hidden')
+
+
 
 
   $('#display-message').html('Sign Out successful')
