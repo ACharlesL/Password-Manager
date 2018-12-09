@@ -1,15 +1,15 @@
-{{#each books as |book|}}
-  {{log book}}
+{{#each passports as |passport|}}
+  {{log passport}}
   <!-- {{> partial}}
   Don't uncomment yet -->
 
   <div>
-    <h1 data-id="{{book.id}}"> <small>Title: {{limit book.title 10}}</small></h1>
-    <section data-id="{{book.id}}"
-    <p>{{#if book.author}}
-      {{book.author}}
+    <h1 data-id="{{passport.id}}"> <small>Title: {{limit passport.title 10}}</small></h1>
+    <section data-id="{{passport.id}}"
+    <p>{{#if passport.cred}}
+      {{passport.cred}}
     {{else}}
-      No author provided.
+      No password provided.
     {{/if}}
     </p>
     <button type="submit" class="btn btn-default">Remove</button>

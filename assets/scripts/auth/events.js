@@ -3,6 +3,7 @@
 const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const showPassportsOnSignIn = require('../passport/events.js')
 
 const onSignUp = function (event) {
   //  console.log('in sign up event')
@@ -29,6 +30,7 @@ const onSignIn = function (event) {
   //  console.log(data)
   api.signIn(data)
     .then(ui.signInSuccess)
+    .then(showPassportsOnSignIn.onGetPassports(event))
     .catch(ui.signInFailure)
 }
 const onSignOut = function (event) {

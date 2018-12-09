@@ -1,7 +1,8 @@
 'use strict'
-
+const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const store = require('../store.js')
 
 // GET All passports
 const onGetPassports = (event) => {
@@ -11,8 +12,14 @@ const onGetPassports = (event) => {
     .catch(ui.failure)
 }
 
+// get passport form
+const createPassportform = function (event) {
+  console.log("in show create form")
+  ui.showCreatePassportForm()
+}
+
 // Create Passports
-const onCreatePassports = (event) => {
+const onCreatePassport = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
 //  console.log(data)
@@ -35,20 +42,22 @@ const onClearBooks = (event) => {
   event.preventDefault()
   ui.clearBooks()
 }
-const onDeleteBook = (event) => {
+
+const onDeletePassport = (event) => {
   event.preventDefault()
-  const bookId = $(event.target).closest('section').data('id')
+  const passportId = $(event.target).closest('section').data('id')
   if (confirm('Are you sure')) {
-    api.deleteBook(bookId)
-      .then(() => onGetBooks(event))
+    api.deletePassport(passportId)
+      .then(() => onGetPassport(event))
       .catch(ui.failure)
   }
 }
 const addHandlers = () => {
   $('#getPassportsButton').on('click', onGetPassports)
-  $('#createPassportButton').on('click', onCreatePassports)
+  $('#createPassportButton').on('click', createPassportform)
   $('#clearBooksButton').on('click', onClearBooks)
   $('.content').on('click', 'button', onDeleteBook)
+  $('#create-passport-form').on('submit', onCreatePassport)
 
 }
 
