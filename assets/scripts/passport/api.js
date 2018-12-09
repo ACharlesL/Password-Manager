@@ -1,10 +1,10 @@
 'use strict'
 
+const config = require('../config')
 const store = require('../store.js')
-const config = require('../config.js')
+
 
 const createPassport = function (currentData) {
-//  console.log('in api')
   return $.ajax({
     url: config.apiUrl + '/passports',
     headers: {
@@ -15,20 +15,28 @@ const createPassport = function (currentData) {
   })
 }
 
-const showPassport = (data) => {
-  console.log('in showpassport api')
+const getPassports = function () {
   return $.ajax({
+    url: config.apiUrl + '/passports',
     headers: {
       Authorization: `Token token=${store.user.token}`
     },
-    url: config.apiUrl + '/passports',
     method: 'GET'
   })
 }
 
+
+const deletePassport = (passportId) => {
+  return $.ajax({
+    url: config.apiUrl + '/passports/' + passportId,
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    method: 'DELETE'
+  })
+}
+
 const updatePassport = (updatedPassport) => {
-  // const updateId = store.updateid
-  // // console.log(store.updateid)
   const updateId = store.updateid
   return $.ajax({
     url: config.apiUrl + '/passports/' + updateId,
@@ -40,18 +48,9 @@ const updatePassport = (updatedPassport) => {
   })
 }
 
-const deletePassport = function (id) {
-  return $.ajax({
-    url: config.apiUrl + '/passports/' + id,
-    method: 'DELETE',
-    headers: {
-      Authorization: `Token token=${store.user.token}`
-    }
-  })
-}
 module.exports = {
   createPassport,
-  showPassport,
+  getPassports,
   deletePassport,
   updatePassport
 }

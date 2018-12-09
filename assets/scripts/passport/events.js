@@ -1,40 +1,22 @@
 'use strict'
 
-const getFormFields = require('../../../lib/get-form-fields.js')
-
-const store = require('../store.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
 
-const onCreatePassport = (event) => {
-  event.preventDefault()
-  const data = getFormFields(event.target)
-  console.log("in create passport")
-  console.log(data)
-  // // console.log(data)
-  //data.passport.checked = false // Always create an passport with false for checked status
-  api.createPassport(data)
-    .then(ui.passportCreateSuccess)
-    .then(showPassports)
-    .catch(ui.passportFailure)
-}
-
-
+// GET All passports
 const onGetPassports = (event) => {
-  console.log("in get pass")
   event.preventDefault()
-  api.showPassport()
+  api.getPassports()
     .then(ui.getPassportsSuccess)
     .catch(ui.failure)
 }
 
-const onUpdatePassport = (event) => {
-//  console.log('in update')
+// Create Passports
+const onCreatePassports = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
 //  console.log(data)
-  store.updateid = data.id
-  const updatedPassport = {
+  const newPassport = {
     'passport': {
       'title': data.title,
       'email': data.email,
@@ -44,39 +26,32 @@ const onUpdatePassport = (event) => {
       'note': data.note
     }
   }
-  api.updatePassport(updatedPassport)
-    .then(ui.updatePassportsSuccess)
+  api.createPassport(newPassport)
+    .then(ui.getPassportsSuccess)
     .catch(ui.failure)
 }
 
-// Delete passport
-const onDeletePassport = (event) => {
+const onClearBooks = (event) => {
   event.preventDefault()
-  // console.log('in delete ingrid')
-  const PassportId = $(event.target).closest('section').data('id')
-  api.deletePassport(PassportId)
-    .then(() => onGetPassports(event))
-    .catch(ui.failure)
+  ui.clearBooks()
 }
-
-
-const showPassports = () => {
-  api.showPassports()
-    .then(ui.showPassportsSuccess)
-    .then(onGetPassports)
-    .catch(ui.passportFailure)
+const onDeleteBook = (event) => {
+  event.preventDefault()
+  const bookId = $(event.target).closest('section').data('id')
+  if (confirm('Are you sure')) {
+    api.deleteBook(bookId)
+      .then(() => onGetBooks(event))
+      .catch(ui.failure)
+  }
 }
-// const showPassports = () => {
-//   console.log("in showPass event")
-//   api.showPassport()
-//     .then(ui.showPassportSuccess)
-//     .then(handlePassports)
-//     .catch(ui.passportFailure)
-// }
+const addHandlers = () => {
+  $('#getPassportsButton').on('click', onGetPassports)
+  $('#createPassportButton').on('click', onCreatePassports)
+  $('#clearBooksButton').on('click', onClearBooks)
+  $('.content').on('click', 'button', onDeleteBook)
+
+}
 
 module.exports = {
-  onCreatePassport,
-  onUpdatePassport,
-  onDeletePassport,
-  onGetPassports
+  addHandlers
 }
