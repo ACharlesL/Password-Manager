@@ -57,8 +57,15 @@ const changePasswordForm = function (event) {
   ui.showChangePasswordForm()
 }
 
+const signUpForm = function (event) {
+  console.log("in show sign up form")
+  ui.showSignUpForm()
+}
+
+
 const addHandlers = () => {
   $('#sign-in-button').on('click', signInForm)
+  $('#sign-up-button').on('click', signUpForm)
   $('#sign-up-form').on('submit', onSignUp)
   $('#sign-in-form').on('submit', onSignIn)
   $('#change-password-button').on('click', changePasswordForm)

@@ -94,7 +94,9 @@ const showSignInForm = function () {
 const showChangePasswordForm = function () {
   $('#change-password-form').removeClass('hidden')
 }
-
+const showSignUpForm = function () {
+  $('#sign-up-form').removeClass('hidden')
+}
 const createGamesuccess = function (response) {
 //  console.log(response)
 }
@@ -130,5 +132,6 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   showSignInForm,
-  showChangePasswordForm
+  showChangePasswordForm,
+  showSignUpForm
 }
