@@ -44,6 +44,11 @@ const updatePassportSuccess = function (response) {
   $('#display-message').css('color', 'green')
 }
 
+const cancel = function (){
+  $('#create-passport-form').trigger('reset')
+  $('#create-passport-form').addClass('hidden')
+}
+
 module.exports = {
   getPassportsSuccess,
   clearPassports,
@@ -51,5 +56,6 @@ module.exports = {
   createPassportSuccess,
   showUpdatePassportForm,
   updatePassportSuccess,
+  cancel,
   failure
 }

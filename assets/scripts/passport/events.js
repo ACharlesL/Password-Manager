@@ -78,15 +78,20 @@ const onDeletePassport = (event) => {
       .catch(ui.failure)
   }
 }
+
+const onCancel = (event) => {
+  console.log("in cancel")
+  ui.cancel()
+}
 const addHandlers = () => {
+  $('.content').on('click', 'button', onDeletePassport)
   $('#create-passport-form').on('submit', onCreatePassport)
+  $('#cancel').on('click', onCancel)
   $('#update-passport-form').on('submit', onUpdatePassport)
   $('#getPassportsButton').on('click', onGetPassports)
   $('#createPassportButton').on('click', createPassportform)
   $('#updatePassportButton').on('click', updatePassportform)
   $('#clearPassportsButton').on('click', onClearPassports)
-  $('.content').on('click', 'button', onDeletePassport)
-
 }
 
 module.exports = {

@@ -24,8 +24,11 @@ This application requires the following:
 * CSS
 * AJAX
 * Sass
-* React
-* Ruby on Rails
+* JQuery
+* HandelBars
+* Grunt
+* Node
+* Git
 
 ## Plan and Development process
 
@@ -44,6 +47,6 @@ This application requires the following:
 * As a non credential user I should be able to sign up with and email address and password.
 * As credential user should be able to sign-in.
 * As a credential user I should be able change my password once logged in.
-* As a credential user I should be able to search for other users (V2)
-* As a credentialed user i should be able to select a language i wish to send and receive messages in.
-* As a credentialed user should be able to start messaging/chat with other credentialed users.
+* As a credential user I should be able to create a passport
+* As a credentialed user I should be able to edit a passport
+* As a credentialed user should be able delete a passport I created
