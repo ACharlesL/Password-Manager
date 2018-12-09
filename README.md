@@ -39,10 +39,10 @@ This application requires the following:
 
 
 ## Wireframe
-  - [Imgur](https://i.imgur.com/BaG8QYp.jpg)
-  - [Imgur](https://i.imgur.com/490lLU6.jpg)
-  - [Imgur](https://i.imgur.com/F7pJGK9.jpg)
-  - [Imgur](https://i.imgur.com/wxIjQWW.jpg)
+  - [Sign up](https://i.imgur.com/BaG8QYp.jpg)
+  - [sign in](https://i.imgur.com/490lLU6.jpg)
+  - [Create passport](https://i.imgur.com/F7pJGK9.jpg)
+  - [Show passports](https://i.imgur.com/wxIjQWW.jpg)
 
 ## User Stories.
 * As a non credential user I should be able to sign up with and email address and password.
