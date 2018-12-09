@@ -17,9 +17,9 @@
 <body class="container-fluid">
   <nav>
     <button id="createPassportButton" class="btn btn-default hidden">Create Passport</button>
+    <button id="updatePassportButton" class="btn btn-default hidden">update Passport</button>
     <button id="getPassportsButton" class="btn btn-default">Get Passports!</button>
-    <button id="clearBooksButton" class="btn btn-default">Clear Books!</button>
-    <button id="sign-in-button" class="btn btn-default "> sign in </button>
+    <button id="sign-in-button" class="btn btn-default">sign in!</button>
     <button id="sign-out-button" class="btn btn-default hidden"> sign out </button>
     <button id="change-password-button" class="btn btn-default hidden"> change password </button>
   </nav>
@@ -74,20 +74,18 @@
         <input type="submit" />
       </form>
 
-      <!-- <form id="change-password-form" class='hidden'>
-        <legend> Change Password </legend>
-        <input required placeholder="Old Password" name="passwords[old]" type="password" />
-        <input required placeholder="New Password" name="passwords[new]" type="password" />
+      <form id="update-passport-form" class='hidden'>
+        <legend> update passport </legend>
+        <input name="id" type="number" id="updatePassportID" class="form-control" placeholder="ID">
+        <input required name="title" placeholder="title" type="text" />
+        <input required name="email" placeholder="johndoe@gmail.com" type="text" />
+        <input required name="cred" placeholder="123abc" type="text" />
+        <input required name="url" placeholder="passwordmanager.com" type="text" />
+        <input required name="contact" placeholder="212-323-434" type="text" />
+        <input required name="note" placeholder="awesome app" type="text" />
         <input type="submit" />
       </form>
 
-      <form id="sign-up-form" class='hidden'>
-        <legend> sign up </legend>
-        <input required placeholder="Enter Email" name="credentials[email]" type="email" />
-        <input required placeholder="Enter Password" name="credentials[password]" type="password" />
-        <input required placeholder="Confirm Password" name="credentials[password_confirmation]" type="password" />
-        <input type="submit" />
-      </form> -->
       <div class="col col-lg-2">
       </div>
     </div>

@@ -5,6 +5,7 @@ const store = require('../store.js')
 
 
 const createPassport = function (currentData) {
+//  console.log('in api')
   return $.ajax({
     url: config.apiUrl + '/passports',
     headers: {
@@ -17,7 +18,7 @@ const createPassport = function (currentData) {
 
 const getPassports = function () {
   return $.ajax({
-    url: config.apiUrl + '/passports',
+    url: config.apiUrl + 'passports',
     headers: {
       Authorization: `Token token=${store.user.token}`
     },

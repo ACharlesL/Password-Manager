@@ -12,6 +12,6 @@ const passportEvents = require('./passport/events.js')
 
 $(() => {
   // fridgeEvents.addHandlers()
-  passportEvents.addHandlers()
   authEvents.addHandlers()
+  passportEvents.addHandlers()
 })

@@ -18,11 +18,11 @@ const createPassportform = function (event) {
   ui.showCreatePassportForm()
 }
 
-// Create Passports
-const onCreatePassport = (event) => {
+// Create Passports POST
+const onCreatePassport = function (event) {
+  console.log('in create event')
   event.preventDefault()
   const data = getFormFields(event.target)
-//  console.log(data)
   const newPassport = {
     'passport': {
       'title': data.title,
@@ -33,31 +33,59 @@ const onCreatePassport = (event) => {
       'note': data.note
     }
   }
+  console.log(newPassport)
   api.createPassport(newPassport)
-    .then(ui.getPassportsSuccess)
+    .then(ui.createPassportSuccess)
     .catch(ui.failure)
 }
 
-const onClearBooks = (event) => {
-  event.preventDefault()
-  ui.clearBooks()
+// Show update form
+const updatePassportform = function (event) {
+  console.log("in update form")
+  ui.showUpdatePassportForm()
 }
 
+// PATCH update passport
+const onUpdatePassport = (event) => {
+//  console.log('in update')
+  event.preventDefault()
+  const data = getFormFields(event.target)
+//  console.log(data)
+  store.updateid = data.id
+  const updatedPassport = {
+    'passport': {
+      'title': data.title,
+      'email': data.email,
+      'cred': data.cred,
+      'url': data.url,
+      'contact': data.contact,
+      'note': data.note
+    }
+  }
+  api.updatePassport(updatedPassport)
+    .then(ui.updatePassportSuccess)
+    .catch(ui.failure)
+}
+
+// Delete Passport DELETE
 const onDeletePassport = (event) => {
+  console.log("in delete passport")
   event.preventDefault()
   const passportId = $(event.target).closest('section').data('id')
   if (confirm('Are you sure')) {
     api.deletePassport(passportId)
-      .then(() => onGetPassport(event))
+      .then(() => onGetPassports(event))
       .catch(ui.failure)
   }
 }
 const addHandlers = () => {
+  $('#create-passport-form').on('submit', onCreatePassport)
+  $('#update-passport-form').on('submit', onUpdatePassport)
   $('#getPassportsButton').on('click', onGetPassports)
   $('#createPassportButton').on('click', createPassportform)
-  $('#clearBooksButton').on('click', onClearBooks)
-  $('.content').on('click', 'button', onDeleteBook)
-  $('#create-passport-form').on('submit', onCreatePassport)
+  $('#updatePassportButton').on('click', updatePassportform)
+  $('#clearPassportsButton').on('click', onClearPassports)
+  $('.content').on('click', 'button', onDeletePassport)
 
 }
 

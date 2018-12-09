@@ -25,8 +25,9 @@ const signInSuccess = function (response) {
   $('#change-password-button').removeClass('hidden')
   $('#sign-out-button').removeClass('hidden')
   $('#createPassportButton').removeClass('hidden')
+  $('#updatePassportButton').removeClass('hidden')
 
-  
+
   $('#sign-up-form').addClass('hidden')
   $('#sign-in-form').addClass('hidden')
 
@@ -64,8 +65,6 @@ const signOutSuccess = function () {
 
   $('#display-message').html('Sign Out successful')
   $('#display-message').css('color', 'green')
-  $('#new-game-button').removeClass('unhide')
-  $('#view-games-button').removeClass('unhide')
   $('#change-password-form').removeClass('unhide')
   $('#Stats-message').addClass('hidden')
   $('#player-logged-on').addClass('hidden')

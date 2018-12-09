@@ -3,10 +3,7 @@
 const showPassportsTemplate = require('../templates/passport-listing.handlebars')
 
 const getPassportsSuccess = (data) => {
-  $('#create-passport-form').trigger('reset')
-  $('#create-passport-form').addClass('hidden')
   console.log(data)
-
   const showPassportsHtml = showPassportsTemplate({ passports: data.passports })
   $('.content').html(showPassportsHtml)
 }
@@ -25,18 +22,34 @@ const showCreatePassportForm = function () {
 }
 // create passport
 const createPassportSuccess = function (response) {
-//  console.log('new password success')
+  console.log('new passport success')
   // store.user = response.user
   $('#create-passport-form').trigger('reset')
   $('#create-passport-form').addClass('hidden')
   $('#display-message').html('passport created')
   $('#display-message').css('color', 'green')
-  $('#create-passport-form').trigger('reset')
+}
+
+// UPDATE passport form show
+const showUpdatePassportForm = function () {
+  $('#update-passport-form').removeClass('hidden')
+}
+// update passport
+const updatePassportSuccess = function (response) {
+  console.log('passport updated')
+  // store.user = response.user
+  $('#update-passport-form').trigger('reset')
+  $('#update-passport-form').addClass('hidden')
+  $('#display-message').html('passport created')
+  $('#display-message').css('color', 'green')
 }
 
 module.exports = {
   getPassportsSuccess,
   clearPassports,
   showCreatePassportForm,
+  createPassportSuccess,
+  showUpdatePassportForm,
+  updatePassportSuccess,
   failure
 }
