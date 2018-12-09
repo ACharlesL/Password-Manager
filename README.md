@@ -6,9 +6,9 @@ In the future the application should provide the users security info regarding t
 
 ## Links
 
-  - [Client]()
+  - [Client](https://acharlesl.github.io/Password-Manager-app/)
 
-  - [API]()
+  - [API](https://passportman-api.herokuapp.com/)
 
   - [API Repo](https://github.com/ACharlesL/Password-Manager-api)
 
@@ -24,7 +24,7 @@ This application requires the following:
 * CSS
 * AJAX
 * Sass
-* JQuery
+* jQuery
 * HandelBars
 * Grunt
 * Node
@@ -34,14 +34,15 @@ This application requires the following:
 
 
 ## Unsolved Problems
-  -
-  -
-  -
+  - some UI improvements needed
+  - implement algorithm to encrypt and store password
+
 
 ## Wireframe
-  - [Imgur](https://i.imgur.com/eSNvdWz.png)
-  - [Imgur](https://i.imgur.com/1PNzo29.png)
-  - [Imgur](https://i.imgur.com/7fJr7L2.png)
+  - [Imgur](https://i.imgur.com/BaG8QYp.jpg)
+  - [Imgur](https://i.imgur.com/490lLU6.jpg)
+  - [Imgur](https://i.imgur.com/F7pJGK9.jpg)
+  - [Imgur](https://i.imgur.com/wxIjQWW.jpg)
 
 ## User Stories.
 * As a non credential user I should be able to sign up with and email address and password.
