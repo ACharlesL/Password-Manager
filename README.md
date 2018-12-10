@@ -63,27 +63,29 @@ Passports:
 |  DELETE | /Passports/:id | Requires=> token: String |
 
 ## Plan and Development process
-  Mon Dec3
-   - Docs
-   - Setup
+  Day 1
+   - Completed most of the basis Docs.
+   - Setup my environment for client and server development
    - Created User stories
    - Create Wire Frames
    - Created ERD
-   - Create yacawt(client) using provided template for React
-   - Created yacht api with ruby and rails provided template
+   - Create passport manager(client) using provided template for browser template
+   - Created passport manager(api) with ruby and rails provided template
    - Create Repo for both client and api and updated readme’s
    - Work on deployment
-  Tue Dec4
-   - Working on express api.
+
+  Day 2-4
+   - Working on Rails api.
    - Rails server setup.
    - auth curl works (api)
-     CREATE (works)
-     READ(works)
-     UPDATE ()
-     DELETE ()
+     CREATE
+     READ
+     UPDATE
+     DELETE
    - Build rails api
    - able to crud a resource of passport
-  Wed Dec5
+
+  Day 5
    - build front end
    - work on sign up form
    - Signup works
@@ -91,16 +93,17 @@ Passports:
    - workin on crud in front end index/GET, show/GET, create/POST, update/PATCH, destroy/DELETE
 
 
-  Obj for set up Rails api - setup database
-
-
 ## Unsolved Problems
+  - Build client using react framework
   - some UI improvements needed including form behaviors.
   - Implement better algorithm to encrypt and store password.
   - Provide some analytics of the application the user is saving credentials for.
 
 ## Images
 ![Alt text](/assets/image/snapshot1.jpg "App snapshot")
+![Alt text](/assets/image/snapshot2.jpg "App snapshot")
+![Alt text](/assets/image/snapshot3.jpg "App snapshot")
+![Alt text](/assets/image/snapshot4.jpg "App snapshot")
 
 ## Wireframe
   - [Sign up](https://i.imgur.com/BaG8QYp.jpg)
