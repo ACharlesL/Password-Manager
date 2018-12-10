@@ -99,6 +99,8 @@ Passports:
   - Implement better algorithm to encrypt and store password.
   - Provide some analytics of the application the user is saving credentials for.
 
+## Images
+![Alt text](/assets/image/snapshot1.jpg "App snapshot")
 
 ## Wireframe
   - [Sign up](https://i.imgur.com/BaG8QYp.jpg)
