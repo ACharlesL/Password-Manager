@@ -18,6 +18,7 @@ const signInSuccess = function (response) {
   $('#sign-in-form').trigger('reset')
   $('#sign-in-form').addClass('hidden')
   $('#sign-in-button').addClass('hidden')
+  $('#sign-up-button').hide()
   // console.log('store before adding user key', store)
   store.user = response.user
   // console.log('store after adding user key', store)
@@ -58,6 +59,8 @@ const signOutSuccess = function () {
   $('.navigation').addClass('hidden')
   $('.content').addClass('hidden')
   $('#sign-in-button').removeClass('hidden')
+  $('#sign-up-button').show()
+
   // hide buttons
   $('#sign-out-button').addClass('hidden')
   $('#change-password-button').addClass('hidden')
