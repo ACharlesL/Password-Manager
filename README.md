@@ -4,6 +4,17 @@ A brief Introduction and summary of the App.
 Password manager is a single page application that allows a user to store a passport which contains credential to an application or website a user uses.
 In the future the application should provide the users security info regarding the website or application.
 
+## Instructions
+1. User should sign-up for an account.
+2. User should sign-in if they have an account.
+3. The application allows a credentialed user to create a passport which is a resource to the user.
+4. A User may have multiple passports.
+5. In order to add an passport click the "create passport" button.
+6. After creating the passport user will see a "passport created" feedback.
+7. The user can click the "get passport" button to see all passports.
+8. A user can sign-out or change password for authentication purposes.
+9. A user can edit, delete, or show a passport which adjusts accordingly on the front and back end.
+
 ## Links
 
   - [Client](https://acharlesl.github.io/Password-Manager-app/)
@@ -30,12 +41,63 @@ This application requires the following:
 * Node
 * Git
 
+## Structure
+
+Authentication:
+
+| Request | Routes | Schema |
+|:-------:|:-------:|:------:|
+|  POST | /sign-up  | Requires=> email: String, password: String, password_confirmation: String |
+|  POST |  /sign-in | Requires=> email: String, password: String |
+|  PATCH |  /change-password | Requires=> old_password: String, new_password: String, token: String |
+|  DELETE |  /sign-out | Requires=> token: String |
+
+Passports:
+
+| Request | Routes | Schema |
+|:-------:|:-------:|:------:|
+|  GET | /Passports  | Requires=> token: String |
+|  GET |  /Passports/:id | Requires=> token: String |
+|  POST |  /Passports | Requires=> title: text, email: text, credential: String, notes: text, contact: text, url: text |
+|  PATCH |  /Passports/:id | Requires=> title: text, email: text, credential: String, notes: text, contact: text, url: text |
+|  DELETE | /Passports/:id | Requires=> token: String |
+
 ## Plan and Development process
+  Mon Dec3
+   - Docs
+   - Setup
+   - Created User stories
+   - Create Wire Frames
+   - Created ERD
+   - Create yacawt(client) using provided template for React
+   - Created yacht api with ruby and rails provided template
+   - Create Repo for both client and api and updated readme’s
+   - Work on deployment
+  Tue Dec4
+   - Working on express api.
+   - Rails server setup.
+   - auth curl works (api)
+     CREATE (works)
+     READ(works)
+     UPDATE ()
+     DELETE ()
+   - Build rails api
+   - able to crud a resource of passport
+  Wed Dec5
+   - build front end
+   - work on sign up form
+   - Signup works
+   - work on crud front end resource
+   - workin on crud in front end index/GET, show/GET, create/POST, update/PATCH, destroy/DELETE
+
+
+  Obj for set up Rails api - setup database
 
 
 ## Unsolved Problems
-  - some UI improvements needed
-  - implement algorithm to encrypt and store password
+  - some UI improvements needed including form behaviors.
+  - Implement better algorithm to encrypt and store password.
+  - Provide some analytics of the application the user is saving credentials for.
 
 
 ## Wireframe
